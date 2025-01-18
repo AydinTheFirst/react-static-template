@@ -1,5 +1,5 @@
-import { NextUIProvider } from "@nextui-org/react";
-import { useTheme } from "next-themes";
+import { HeroUIProvider } from "@heroui/react";
+import { ThemeProvider, useTheme } from "next-themes";
 import { Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
 
@@ -9,10 +9,12 @@ const App = () => {
   const { theme } = useTheme();
 
   return (
-    <NextUIProvider>
-      <Outlet />
-      <Toaster theme={theme as Theme} />
-    </NextUIProvider>
+    <ThemeProvider>
+      <HeroUIProvider>
+        <Outlet />
+        <Toaster theme={theme as Theme} />
+      </HeroUIProvider>
+    </ThemeProvider>
   );
 };
 
